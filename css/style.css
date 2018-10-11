@@ -1,0 +1,171 @@
+.body {
+  background-color: #333333;
+  font-family: 'Krub', sans-serif;
+  font: 1.42em;
+}
+
+.today {
+  font-size: 1.16em;
+  font: monospace;
+  margin-bottom: 1.11rem;
+  text-align: center;
+  color: #ededed;
+}
+
+.container {
+  padding-top: 75px;
+}
+
+.has-feedback .fa:hover {
+  color: #999999;
+}
+
+.has-feedback .fa {
+  line-height: 35px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 10;
+  display: block;
+  color: #666666;
+  -webkit-transition: color 0.15s linear;
+  transition: color 0.15s linear;
+}
+
+.add-control {
+  margin-top: 20px;
+  position: relative;
+}
+
+.add-control .form-control {
+  background-color: #222222;
+  padding: 8px 25px 8px 15px;
+}
+
+.add-control .refresh {
+  position: absolute;
+  top: 8px;
+  right: 0;
+  font-size: 14px;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  margin-right: -10px;
+  cursor: pointer;
+  color: #9da1af;
+  -webkit-transition: color 0.15s linear;
+  transition: color 0.15s linear;
+}
+
+.add-control .refresh:hover {
+  color: #666;
+}
+
+.form-control,
+.form-control:focus,
+.form-control:active,
+.form-control:active:focus {
+  border: none;
+  padding: 10px 15px;
+  outline: none;
+}
+
+.form-control {
+  border-radius: 0.18rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.form-control:focus {
+  color: #f2f2f2;
+  -webkit-box-shadow: 0 0 15px rgba(0,0,0,0.2);
+          box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.todo-list {
+  margin: 20px 0;
+  padding-left: 0;
+}
+
+.todo-list li {
+  background: #f3f3f3;
+  border-radius: 0.18rem;
+  margin-bottom: 7px;
+  position: relative;
+  word-break: break-word;
+}
+
+.todo-list li.danger {
+  background: #c985b5;
+}
+
+.todo-list li.danger label {
+  text-decoration: line-through;
+  color: #fff;
+}
+
+.todo-list li.danger label .checkbox-mask {
+  display: inline-block;
+  margin-top: 0.04rem;
+  margin-left: -2.13rem;
+  border-color: transparent;
+}
+
+.todo-list li.danger label .checkbox-mask:after {
+  content: "\f00c";
+  font-family: 'FontAwesome';
+  display: block;
+  position: absolute;
+  top: -3px;
+  left: 0;
+}
+
+.todo-list li .checkbox {
+  margin: 0;
+  padding: 10px 15px;
+  border-radius: 0.18rem;
+}
+
+.todo-list li label {
+  display: block;
+  padding-right: 10px;
+}
+
+.todo-list li label input[type="checkbox"] {
+  visibility: hidden;
+}
+
+.todo-list li label .checkbox-mask {
+  display: block;
+  border: 2px solid #666;
+  width: 12px;
+  height: 12px;
+  border-radius: 0.18rem;
+  position: absolute;
+  margin-left: -20px;
+  margin-top: 4px;
+}
+
+.todo-list li .close {
+  display: none;
+  position: absolute;
+  width: 12px;
+  height: 16px;
+  top: 50%;
+  margin-top: -8px;
+  right: 10px;
+  font-size: 16px;
+}
+
+.todo-list li .close .fa {
+  line-height: 16px;
+}
+
+.todo-list li:hover .close {
+  display: block;
+}
+
+.todo-list input[type="checkbox"] {
+  visibility: hidden;
+  opacity: 0;
+}
