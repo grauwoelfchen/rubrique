@@ -16,15 +16,21 @@
   padding-top: 75px;
 }
 
-.has-feedback .fa:hover {
+.has-feedback .add-btn:hover {
   color: #999999;
+  cursor: pointer;
 }
 
-.has-feedback .fa {
+.has-feedback .add-btn {
+  font-weight: bold;
+  font-size: 1.22em;
+  width: 20px;
+  margin: -3.48rem 0 0 50.8rem;
+  padding: 0.12rem 2.2rem;
   line-height: 35px;
   cursor: pointer;
   pointer-events: auto;
-  z-index: 10;
+  z-index: 999999;
   display: block;
   color: #666666;
   -webkit-transition: color 0.15s linear;
@@ -83,6 +89,7 @@
 }
 
 .todo-list {
+  list-style: none;
   margin: 20px 0;
   padding-left: 0;
 }
@@ -112,8 +119,7 @@
 }
 
 .todo-list li.danger label .checkbox-mask:after {
-  content: "\f00c";
-  font-family: 'FontAwesome';
+  content: '\2713';
   display: block;
   position: absolute;
   top: -3px;
@@ -165,7 +171,21 @@
   display: block;
 }
 
+.todo-list li.animated {
+  background-color: #888888;
+}
+
 .todo-list input[type="checkbox"] {
   visibility: hidden;
   opacity: 0;
+}
+
+li.sortable-chosen,
+li.sortable-chosen > div {
+  border-radius: 0.18rem;
+}
+
+li.sortable-ghost,
+li.sortable-ghost > div {
+  background-color: #666666;
 }
