@@ -1,6 +1,6 @@
 # Tusk
 
-A personal task management tool which utilizes local strage by web browser.
+A personal task management tool utilizes local storage by web browser.
 
 ## Screenshot
 
