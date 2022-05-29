@@ -19,5 +19,5 @@ See [LICENSE](LICENSE).
 
 ```
 Tusk
-Copyright (c) 2020 Yasuhiro Яша Asaka
+Copyright (c) 2020-2022 Yasuhiro Яша Asaka
 ```
