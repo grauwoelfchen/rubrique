@@ -1,3 +1,5 @@
+import './index.styl';
+
 function setDefaultState() {
   var id = generateID();
   var baseState = {};
