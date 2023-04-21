@@ -27,5 +27,5 @@ See [LICENSE](LICENSE).
 
 ```
 Tiny Tiny Task
-Copyright (c) 2020-2022 Yasuhiro Яша Asaka
+Copyright (c) 2020-2023 Yasuhiro Яша Asaka
 ```
