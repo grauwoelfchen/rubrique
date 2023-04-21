@@ -1,4 +1,9 @@
 Fri 21 Apr 2023 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>
+	Add a logo and favicon
+
+	* dst/favicon.ico: Favicon
+	* img/logo.png: A logo file used in README.md
+
 	Rename this project as Tiny Tiny Task (ttt) XD
 
 Mon 30 May 2022 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>
