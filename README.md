@@ -3,7 +3,7 @@
 Tiny Tiny Task (TTT) is a personal tool that utilizes `Window.localStorage` for
 temporary tiny tasks.
 
-![Logo](img/logo.png?raw=true "Logo - TTT")
+![Logo](img/logo-72x72.png?raw=true "Logo - TTT")
 
 ## TODO
 
