@@ -72,6 +72,6 @@ help: # Display this message
 		sed --expression='s/\([a-z0-9\-\:\ ]*\): \([a-z0-9\-\:\ ]*\) #/\1: #/g' | \
 		tr --delete \\\\ | \
 		awk 'BEGIN {FS = ": # "}; \
-			{printf "\033[38;05;222m%-18s\033[0m %s\n", $$1, $$2}' | \
+			{printf "\033[38;05;026m%-18s\033[0m %s\n", $$1, $$2}' | \
 		sort
 .PHONY: help
