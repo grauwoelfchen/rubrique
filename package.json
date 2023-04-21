@@ -11,7 +11,8 @@
   "scripts": {
     "build:production": "rollup -c --configBuildProduction",
     "build:development": "rollup -c --configBuildDevelopment",
-    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "lint:tslint": "tslint -c tslint.json -p tsconfig.json",
+    "lint:stylint": "stylint src",
     "test": "echo \"error: no test specified\" && exit 1",
     "watch:build": "rollup -w -c --configBuildDevelopment",
     "watch:lint": "onchange 'src/**/*' -- npm run lint"

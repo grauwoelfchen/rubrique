@@ -10,8 +10,16 @@ vet\:check: # Vet errors using tsc [alias: check]
 check: vet\:check
 .PHONY: check
 
-vet\:lint: # Check coding style for TypScript [alias: lint]
-	@npm run lint
+vet\:lint\:ts: # Check coding style for TypScript
+	@npm run lint:tslint
+.PHONY: vet\:lint\:ts
+
+vet\:lint\:styl: # Check coding style for Stylus
+	@npm run lint:stylint
+.PHONY: vet\:lint\:styl
+
+vet\:lint: # Check code using all vet:lint:xxx [alias: lint]
+	@$(MAKE) -s vet:lint:ts || $(MAKE) -s vet:lint:styl
 .PHONY: vet\:lint
 
 lint: vet\:lint
