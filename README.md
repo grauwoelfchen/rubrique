@@ -1,6 +1,7 @@
-# Tusk
+# Tiny Tiny Task
 
-A personal task management tool utilizes local storage by web browser.
+Tiny Tiny Task (TTT) is a personal tool that utilizes `Window.localStorage` for
+temporary tiny tasks.
 
 ## TODO
 
@@ -11,7 +12,7 @@ A personal task management tool utilizes local storage by web browser.
 
 ## Screenshot
 
-![Logo](img/screenshot.png?raw=true "Screenshot - Tusk")
+![Logo](img/screenshot.png?raw=true "Screenshot - TTT")
 
 ## Glitch
 
@@ -25,6 +26,6 @@ under the terms of the MIT License.
 See [LICENSE](LICENSE).
 
 ```
-Tusk
+Tiny Tiny Task
 Copyright (c) 2020-2022 Yasuhiro Яша Asaka
 ```

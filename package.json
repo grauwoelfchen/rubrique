@@ -1,9 +1,9 @@
 {
-  "name": "tusk",
+  "name": "ttt",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://git.sr.ht/~grauwoelfchen/tusk"
+    "url": "https://git.sr.ht/~grauwoelfchen/ttt"
   },
   "engines": {
     "node": "18.x"
