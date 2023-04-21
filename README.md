@@ -6,9 +6,9 @@ temporary tiny tasks.
 ## TODO
 
 * [ ] Fix syntax (TypeScript, Stylus)
-* [ ] Remove CDN links
-* [ ] Remove third-parties (Bootstrap, Sortable)
-* [ ] Rename project
+* [x] Remove CDN links
+* [x] Remove third-parties (Bootstrap, Sortable)
+* [x] Rename project
 
 ## Screenshot
 

@@ -1,48 +1,49 @@
 import './index.styl';
 
 function setDefaultState() {
-  var id = generateID();
-  var baseState = {};
+  const id = generateID();
+  const baseState = {};
   baseState[id] = {
     status: 'new'
-  , id: id
+  , id
   , title: 'Hello, World!'
   };
   syncState(baseState);
 }
 
 function generateID() {
-  var randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+  const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
   return randLetter + Date.now();
 }
 
 function pushToState(title, status, id) {
-  var baseState = getState();
+  const baseState = getState();
   baseState[id] = {
-    id: id
-  , title: title
-  , status: status
+    id
+  , title
+  , status
   };
   syncState(baseState);
 }
 
 function setToDone(id) {
-  var baseState = getState();
-  if (baseState[id].status === 'new') {
-    baseState[id].status = 'done'
-  } else {
-    baseState[id].status = 'new';
+  const baseState = getState();
+  const state = baseState[id];
+  if state !== undefined {
+    const next = (state.status === 'new') ? 'done' : 'new';
+    baseState[id].status = next;
+    syncState(baseState);
   }
-  syncState(baseState);
 }
 
 function deleteTodo(id) {
-  var baseState = getState();
-  delete baseState[id]
-  syncState(baseState)
+  const baseState = getState();
+  delete baseState[id];
+  syncState(baseState);
 }
 
 function resetState() {
+  localStorage.clear();
   localStorage.setItem('state', null);
 }
 
@@ -55,113 +56,112 @@ function getState() {
 }
 
 function addItem(text, status, id, noUpdate) {
-  var id = id ? id : generateID();
-  var klass = status === 'done' ? 'danger' : '';
-  var item =
-    '<li data-id="' + id + '" class="' + klass + '">' +
-    '<div class="checkbox">' +
-      '<span class="close">x</span>' +
-      '<label><span class="checkbox-mask"></span>' +
-      '<input type="checkbox" />' + text + '</label>' +
-    '</div>' +
-    '</li>';
+  const dataId = id ? id : generateID();
+  const klass = status === 'done' ? 'done' : '';
 
-  var control = document.querySelector('.form-control');
-  var err = document.querySelector('.err');
+  const item =
+    '<li data-id="' + dataId + '" class="' + klass + '">'
+    + '<div class="checkbox">'
+    + '<span class="close">x</span>'
+    + '<label><span class="checkbox-mask"></span>'
+    + '<input type="checkbox" />' + text + '</label>'
+    + '</div>'
+  + '</li>';
 
-  if (text === '') {
-    err.classList.remove('hidden');
-  } else {
-    err.classList.add('hidden');
+  const ctl = document.querySelector('.form-control');
+
+  if (text !== '') {
     document.querySelector('.todo-list').insertAdjacentHTML(
       'afterbegin', item);
   }
 
-  control.value = '';
-  control.setAttribute('placeholder', 'Add item...');
-  setTimeout(function() {
-    let elem = document.querySelector('.todo-list li');
-    if (elem != null) {
-      elem.classList.remove('animated');
+  ctl.value = '';
+  ctl.setAttribute('placeholder', 'Add item...');
+  setTimeout(() => {
+    const elm = document.querySelector('.todo-list li');
+    if (elm != null) {
+      const btn = elm.querySelector('.close');
+      if (btn != null) {
+        setDeleteListener(btn);
+      }
+
+      const chk = elm.querySelector('input[type="checkbox"]');
+      if (chk != null) {
+        setDoneListener(chk);
+      }
+
+      elm.classList.remove('animated');
     }
   }, 150);
 
   if (!noUpdate) {
-    pushToState(text, 'new', id);
+    pushToState(text, 'new', dataId);
   }
 }
 
-var dateLine = document.querySelector('.today');
-dateLine.innerHTML = new Date();
+function setDoneListener(elm) {
+  elm.addEventListener('click', (e) => {
+    const li = e.target.parentNode.parentNode.parentNode;
+    li.classList.toggle('done');
+    li.classList.toggle('animated');
 
-document.addEventListener('DOMContentLoaded', function(event) {
-  var state = getState();
+    setToDone(li.getAttribute('data-id'));
+    setTimeout(() => {
+      li.classList.remove('animated');
+    }, 150);
+  });
+}
+
+function setDeleteListener(elm) {
+  elm.addEventListener('click', (e) => {
+    const box = e.target.parentNode.parentNode;
+
+    const tasksCount = document.querySelectorAll('.todo-list li').length;
+    setTimeout(() => {
+      box.remove();
+      if (tasksCount === 1) {
+        const m = document.querySelector('.no-items');
+        if (m !== null) {
+          m.classList.remove('hidden');
+        }
+      }
+    }, 200);
+    deleteTodo(box.getAttribute('data-id'));
+  });
+}
+
+document.addEventListener('DOMContentLoaded', (_) => {
+  let state = getState();
 
   if (!state) {
     setDefaultState();
     state = getState();
   }
 
-  Object.keys(state).forEach(function(todoKey) {
-    var todo = state[todoKey];
+  Object.keys(state).forEach((key) => {
+    const todo = state[key];
     addItem(todo.title, todo.status, todo.id, true);
   });
 
-  var control = document.querySelector('.form-control')
-    , isError = control.classList.contains('hidden')
-    ;
+  const ctl = document.querySelector('.form-control');
 
-  if (!isError) {
-    var err = document.querySelector('.err');
-    err.classList.add('hidden');
-  }
-
-  var btn = document.querySelector('.add-btn');
-  btn.addEventListener('click', function(event) {
-    addItem(control.value);
-    control.focus();
+  // [mark as done] by checking a box
+  const done = document.querySelectorAll('.todo-list input[type="checkbox"]');
+  Array.prototype.slice.call(done).map((m) => {
+    setDoneListener(m);
   });
 
-  var nodeList;
-
-  // check
-  nodeList = document.querySelectorAll('.todo-list input[type="checkbox"]');
-  Array.prototype.slice.call(nodeList).map(function(element) {
-    element.addEventListener('click', function(event) {
-      var li = this.parentNode.parentNode.parentNode;
-      li.classList.toggle('danger');
-      li.classList.toggle('animated');
-
-      setToDone(li.getAttribute('data-id'));
-      setTimeout(function() {
-        li.classList.remove('animated');
-      }, 150);
-    });
+  // [delete] by clicking X
+  const closed = document.querySelectorAll('.todo-list .close');
+  Array.prototype.slice.call(closed).map((m) => {
+    setDeleteListener(m);
   });
 
-  // done
-  nodeList = document.querySelectorAll('.todo-list .close');
-  Array.prototype.slice.call(nodeList).map(function(element) {
-    element.addEventListener('click', function(event) {
-      var box = this.parentNode.parentNode;
-
-      var tasksCount = document.querySelectorAll('.todo-list li').length;
-      setTimeout(function() {
-        box.remove();
-        if (tasksCount === 1) {
-          document.querySelector('.no-items').classList.remove('hidden');
-        }
-      }, 200);
-      deleteTodo(box.getAttribute('data-id'));
-    });
-  });
-
-  control.addEventListener('keypress', function(event) {
-    if (event.key.toString() === 'Enter') {
-      addItem(this.value);
+  ctl.addEventListener('keypress', (e) => {
+    if (e.key.toString() === 'Enter') {
+      if (e.target.tagName === 'INPUT') {
+        addItem(e.target.value);
+      }
     }
   });
-
-  var list = document.querySelector('.todo-list');
-  Sortable.create(list);
 });
