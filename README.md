@@ -5,16 +5,9 @@ temporary tiny tasks.
 
 ![Logo](img/logo-72x72.png?raw=true "Logo - TTT")
 
-## TODO
+## To-do list
 
-* [ ] Fix syntax (TypeScript, Stylus)
-* [x] Remove CDN links
-* [x] Remove third-parties (Bootstrap, Sortable)
-* [x] Rename project
-
-## Screenshot
-
-![Screenshot](img/screenshot.png?raw=true "Screenshot - TTT")
+![To-do list](img/screenshot.png?raw=true "To-do list - TTT")
 
 ## Glitch
 
