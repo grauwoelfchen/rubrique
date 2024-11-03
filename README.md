@@ -22,5 +22,5 @@ See [LICENSE](LICENSE).
 
 ```
 Rubrique
-Copyright (c) 2020-2023 Yasuhiro Яша Asaka
+Copyright (c) 2020-2024 Yasha
 ```
