@@ -2,7 +2,7 @@ import './index.styl';
 
 function setDefaultState() {
   const id = generateID();
-  const baseState = {};
+  const baseState: any = {};
   baseState[id] = {
     status: 'new'
   , id
@@ -16,7 +16,7 @@ function generateID() {
   return randLetter + Date.now();
 }
 
-function pushToState(title, status, id) {
+function pushToState(title: string, status: string, id: string) {
   const baseState = getState();
   baseState[id] = {
     id
@@ -26,57 +26,69 @@ function pushToState(title, status, id) {
   syncState(baseState);
 }
 
-function setToDone(id) {
+function setToDone(id: string) {
   const baseState = getState();
   const state = baseState[id];
-  if state !== undefined {
+  if (state !== undefined) {
     const next = (state.status === 'new') ? 'done' : 'new';
     baseState[id].status = next;
     syncState(baseState);
   }
 }
 
-function deleteTodo(id) {
+function deleteTodo(id: string) {
   const baseState = getState();
   delete baseState[id];
   syncState(baseState);
 }
 
-function resetState() {
-  localStorage.clear();
-  localStorage.setItem('state', null);
-}
-
-function syncState(state) {
+function syncState(state: string) {
   localStorage.setItem('state', JSON.stringify(state));
 }
 
 function getState() {
-  return JSON.parse(localStorage.getItem('state'));
+  const data: string = localStorage.getItem('state') || '{}';
+  return JSON.parse(data);
 }
 
-function addItem(text, status, id, noUpdate) {
+function addItem(
+    text: string
+  , status: string | null
+  , id: string | null
+  , noUpdate: boolean | null
+) {
   const dataId = id ? id : generateID();
   const klass = status === 'done' ? 'done' : '';
+
+  let out: string = text;
+  if (status !== 'done' && text !== '') {
+    const c = text.slice(0, 1);
+    const r = text.slice(1);
+    out = '<span class="first-letter">' + c + '</span>' + r;
+  }
 
   const item =
     '<li data-id="' + dataId + '" class="' + klass + '">'
     + '<div class="checkbox">'
     + '<span class="close">x</span>'
     + '<label><span class="checkbox-mask"></span>'
-    + '<input type="checkbox" />' + text + '</label>'
+    + '<input type="checkbox" />' + out + '</label>'
     + '</div>'
   + '</li>';
 
   const ctl = document.querySelector('.form-control');
 
   if (text !== '') {
-    document.querySelector('.todo-list').insertAdjacentHTML(
-      'afterbegin', item);
+    const list = document.querySelector('.todo-list');
+    if (list != null) {
+      list.insertAdjacentHTML('afterbegin', item);
+    }
   }
 
-  ctl.value = '';
-  ctl.setAttribute('placeholder', 'Add item...');
+  if (ctl != null) {
+    ctl.setAttribute('value', '');
+    ctl.setAttribute('placeholder', 'Add item...');
+  }
   setTimeout(() => {
     const elm = document.querySelector('.todo-list li');
     if (elm != null) {
@@ -99,8 +111,8 @@ function addItem(text, status, id, noUpdate) {
   }
 }
 
-function setDoneListener(elm) {
-  elm.addEventListener('click', (e) => {
+function setDoneListener(elm: any) {
+  elm.addEventListener('click', (e: any) => {
     const li = e.target.parentNode.parentNode.parentNode;
     li.classList.toggle('done');
     li.classList.toggle('animated');
@@ -112,8 +124,8 @@ function setDoneListener(elm) {
   });
 }
 
-function setDeleteListener(elm) {
-  elm.addEventListener('click', (e) => {
+function setDeleteListener(elm: any) {
+  elm.addEventListener('click', (e: any) => {
     const box = e.target.parentNode.parentNode;
 
     const tasksCount = document.querySelectorAll('.todo-list li').length;
@@ -145,23 +157,28 @@ document.addEventListener('DOMContentLoaded', (_) => {
 
   const ctl = document.querySelector('.form-control');
 
+  /*
   // [mark as done] by checking a box
   const done = document.querySelectorAll('.todo-list input[type="checkbox"]');
-  Array.prototype.slice.call(done).map((m) => {
+  Array.prototype.slice.call(done).map((m: any) => {
     setDoneListener(m);
   });
+  */
 
   // [delete] by clicking X
   const closed = document.querySelectorAll('.todo-list .close');
-  Array.prototype.slice.call(closed).map((m) => {
+  Array.prototype.slice.call(closed).map((m: any) => {
     setDeleteListener(m);
   });
 
-  ctl.addEventListener('keypress', (e) => {
-    if (e.key.toString() === 'Enter') {
-      if (e.target.tagName === 'INPUT') {
-        addItem(e.target.value);
+  if (ctl != null) {
+    ctl.addEventListener('keypress', (e: any) => {
+      if (e.key.toString() === 'Enter') {
+        if (e.target.tagName === 'INPUT') {
+          addItem(e.target.value.trim(), null, null, null);
+          e.target.value = '';
+        }
       }
-    }
-  });
+    });
+  }
 });
