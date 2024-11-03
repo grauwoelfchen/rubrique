@@ -1,9 +1,9 @@
 {
-  "name": "ttt",
+  "name": "rubrique",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "https://git.sr.ht/~grauwoelfchen/ttt"
+    "url": "https://git.sr.ht/~grauwoelfchen/rubrique"
   },
   "engines": {
     "node": "18.15.x"

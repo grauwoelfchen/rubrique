@@ -1,4 +1,7 @@
-Fri 21 Apr 2023 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>
+Sun 03 Nov 2024 Yasha <yasuhiro.asaka@grauwoelfchen.net>
+	Rename to Rubrique
+
+Fri 21 Apr 2023 Yasha <yasuhiro.asaka@grauwoelfchen.net>
 	Add a logo and favicon
 
 	* dst/favicon.ico: Favicon
@@ -6,13 +9,13 @@ Fri 21 Apr 2023 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>
 
 	Rename this project as Tiny Tiny Task (ttt) XD
 
-Mon 30 May 2022 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>
-	* Introduce Rollup
-	* Update CDN link
-	* Fix HTML structure of index.html
+Mon 30 May 2022 Yasha <yasuhiro.asaka@grauwoelfchen.net>
+	Introduce Rollup
+	Update CDN link
+	Fix HTML structure of index.html
 
-Fri 25 Dec 2020 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>
-	* Tidy up repo
+Fri 25 Dec 2020 Yasha <yasuhiro.asaka@grauwoelfchen.net>
+	Tidy up repo
 
-Thu 11 Oct 2018 Yasuhiro Яша Asaka <yasuhiro.asaka@grauwoelfchen.net>
-	* Initial import ;)
+Thu 11 Oct 2018 Yasha <yasuhiro.asaka@grauwoelfchen.net>
+	Initial import ;)

@@ -1,13 +1,13 @@
-# Tiny Tiny Task
+# Rubrique
 
-Tiny Tiny Task (TTT) is a personal tool that utilizes `Window.localStorage` for
+Rubrique is a personal tool that utilizes `Window.localStorage` for
 temporary tiny tasks.
 
-![Logo](img/logo-72x72.png?raw=true "Logo - TTT")
+![Logo](img/logo-72x72.png?raw=true "Logo - Rubrique")
 
 ## To-do list
 
-![To-do list](img/screenshot.png?raw=true "To-do list - TTT")
+![To-do list](img/screenshot.png?raw=true "To-do list - Rubrique")
 
 ## Glitch
 
@@ -21,6 +21,6 @@ under the terms of the MIT License.
 See [LICENSE](LICENSE).
 
 ```
-Tiny Tiny Task
-Copyright (c) 2020-2023 Yasuhiro Яша Asaka
+Rubrique
+Copyright (c) 2020-2024 Yasha
 ```
