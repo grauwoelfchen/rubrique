@@ -1,3 +1,10 @@
+> [!NOTE]
+>
+> This repository has been moved. Please check the new locations below.
+>
+> * [~grauwoelfchen/rubrique](https://git.sr.ht/~grauwoelfchen/rubrique) on Sourcehut
+> * [grauwoelfchen/rubrique](https://codeberg.org/grauwoelfchen/rubriquem) on Codeberg
+
 # Rubrique
 
 Rubrique is a personal tool that utilizes `Window.localStorage` for
